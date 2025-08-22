@@ -1,0 +1,8 @@
+.topbar{ max-width:1100px; margin:0 auto 12px; display:grid; grid-template-columns:120px 1fr 120px; align-items:center }
+.back{ border:0; background:transparent; padding:8px; font-size:14px; cursor:pointer; color:#334155 }
+.title{ font-weight:700 }
+
+
+.panel{ max-width:1100px; margin:0 auto; background:var(--surface); border-radius:16px; padding:18px; box-shadow:0 8px 24px rgba(0,0,0,.07) }
+.panel h2{ margin:0 0 8px; font-size:18px }
+.list{ margin:0; padding-left:18px; display:grid; gap:6px }

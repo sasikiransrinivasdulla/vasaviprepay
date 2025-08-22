@@ -1,7 +1,7 @@
 import React from 'react';
 import './NavBar.css';
 
-const NavBar = ({ activeTab, setActiveTab }) => {
+const SelectBar = ({ activeTab, setActiveTab }) => {
   return (
     <nav className="navbar">
       <button 
@@ -22,4 +22,4 @@ const NavBar = ({ activeTab, setActiveTab }) => {
   );
 };
 
-export default NavBar;
+export default SelectBar;
