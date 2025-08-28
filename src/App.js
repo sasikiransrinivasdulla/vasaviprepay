@@ -3,6 +3,7 @@ import { getRoute } from "./router";
 import Home from "./pages/Home";
 import BakeryPage from "./pages/BakeryPage";
 import StorePage from "./pages/StorePage";
+import AdminPage from "./pages/AdminPage";
 
 
 export default function App() {
@@ -17,5 +18,6 @@ return () => window.removeEventListener("hashchange", onHash);
 
 if (route === "/bakery") return <BakeryPage />;
 if (route === "/store") return <StorePage />;
+if (route === "/admin") return <AdminPage />;
 return <Home />;
 }

@@ -1,58 +1,103 @@
-import React from "react";
-import Card from "../components/Card";
-import { navigate } from "../router";
+import React, { useEffect } from "react";
+import Header from "../components/Header";
+import ServiceCard from "../components/ServiceCard";
+import Footer from "../components/Footer";
 import "../styles/home.css";
 
-
 export default function Home() {
-return (
-<div className="page">
-<header className="header">
-<h1>Welcome to Vasavi Pre Pay</h1>
-<p>Simple pre-pay for bakery and store</p>
-</header>
+  // fade-in animation when cards scroll into view (simple)
+  useEffect(() => {
+    const cards = document.querySelectorAll(".svc-card");
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("in");
+            obs.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    cards.forEach((c) => obs.observe(c));
+    return () => obs.disconnect();
+  }, []);
 
+  return (
+    <>
+      <Header />
 
-<div className="cards">
-<Card
-title="Bakery"
-subtitle="See items and pay in advance"
-list={["Get The Food Hot", "EAT SLEEP REPEAT"]}
-ctaLabel="Order Bakery"
-onClick={() => navigate("/bakery")}
-tone="blue"
-icon="🥐"
-/>
+      <section className="hero">
+        <div className="container hero-in">
+          <h1>Redefining Campus Convenience</h1>
+          <p>
+            Seamless pre-payments for your campus needs. From stationery to
+            fresh food.
+          </p>
+          <a className="cta" href="#services">
+            Explore Services
+          </a>
+        </div>
+      </section>
 
+      <section className="services" id="services">
+        <div className="container">
+          <h2 className="title">Our Services</h2>
+          <div className="svc-grid">
+            <ServiceCard
+              iconClass="fas fa-print"
+              title="Campus Store"
+              text="Pre-pay for stationery and upload PDFs for printing."
+              features={[
+                "PDF printing",
+                "Wide stationery",
+                "Skip queues",
+                "Digital receipts",
+              ]}
+              ctaText="Visit Store"
+              to="/store"
+            />
+            <ServiceCard
+              iconClass="fas fa-utensils"
+              title="Bakery Pre-Order"
+              text="Pre-order snacks and meals. Pick up on time."
+              features={[
+                "Order anywhere",
+                "Many options",
+                "Custom orders",
+                "Scheduled pickup",
+              ]}
+              ctaText="Order Bakery"
+              to="/bakery"
+            />
+            <ServiceCard
+              iconClass="fas fa-chart-line"
+              title="Admin Dashboard"
+              text="Monitor and manage orders and transactions."
+              features={["Real-time stats", "Transactions", "Users", "Reports"]}
+              ctaText="Admin Portal"
+              to="/admin"
+            />
+          </div>
+        </div>
+      </section>
 
-<Card
-title="Store"
-subtitle="Upload PDFs and buy stationery"
-list={["Print Before U Reach", "Get a Free Choci-Choci"]}
-ctaLabel="Visit Store"
-onClick={() => navigate("/store")}
-tone="orange"
-icon="🧾"
-/>
-</div>
+      <section className="soon">
+        <div className="container soon-in">
+          <div className="hammer">
+            <i className="fas fa-hammer"></i>
+          </div>
+          <h2>Enhanced Experience Coming Soon</h2>
+          <p>
+            We are adding more features and making things smoother. Stay tuned.
+          </p>
+          <a className="cta" href="#">
+            Notify Me
+          </a>
+        </div>
+      </section>
 
-
-<div className="features">
-<Feature label="24/7" sub="Available" />
-<Feature label="Fast" sub="Service" />
-<Feature label="₹0" sub="Extra Fees" />
-<Feature label="Safe" sub="Payments" />
-</div>
-</div>
-);
-}
-
-
-function Feature({ label, sub }) {
-return (
-<div className="feature">
-<div className="feature-top">{label}</div>
-<div className="feature-sub">{sub}</div>
-</div>
-);
+      <Footer />
+    </>
+  );
 }

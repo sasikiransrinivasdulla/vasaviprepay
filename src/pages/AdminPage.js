@@ -3,19 +3,16 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "../styles/pages.css";
 
-export default function StorePage() {
+export default function AdminPage() {
   return (
     <>
       <Header />
       <main className="wrap">
         <div className="panel">
-          <h2>Campus Store</h2>
-          <ul className="list">
-            <li>PDF Printing — ₹2 per page</li>
-            <li>Notebook — ₹45</li>
-            <li>Pens & Pencils — ₹15</li>
-            <li>Other stationery items</li>
-          </ul>
+          <h2>Admin Dashboard</h2>
+          <p className="muted">
+            Placeholder page. Add charts and tables later.
+          </p>
         </div>
       </main>
       <Footer />
