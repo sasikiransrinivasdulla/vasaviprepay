@@ -221,28 +221,14 @@
   gap: 24px;
   margin-bottom: 24px;
 }
-.fcol h3 {
-  margin: 0 0 12px;
+.ftr.ftr-compact {
+  padding: 28px 0 18px; /* smaller */
 }
-.fcol ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.fcol li {
-  margin-bottom: 10px;
-}
-.fcol a,
-.fcol button {
-  background: none;
-  border: 0;
-  color: var(--muted);
-  text-decoration: none;
-  cursor: pointer;
-}
-.fcol a:hover,
-.fcol button:hover {
-  color: var(--blue);
+.ftr-grid.ftr-grid-compact {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 cols on mobile */
+  gap: 16px; /* tighter gap */
+  margin-bottom: 12px;
 }
 .copy {
   text-align: center;
@@ -250,6 +236,33 @@
   border-top: 1px solid var(--g3);
   color: var(--muted);
   font-size: 0.9rem;
+}
+.fcol h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+.fcol p.muted {
+  margin: 6px 0;
+}
+.fcol ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.fcol li {
+  margin-bottom: 8px;
+}
+.fcol a,
+.fcol button {
+  background: none;
+  border: 0;
+  color: var(--muted);
+  cursor: pointer;
+  text-decoration: none;
+}
+.fcol a:hover,
+.fcol button:hover {
+  color: var(--blue);
 }
 
 /* keyframes */
@@ -269,5 +282,26 @@
   }
   .hero-in p {
     font-size: 1rem;
+  }
+}
+.copy.copy-compact {
+  padding-top: 10px;
+  border-top: 1px solid var(--g3);
+  color: var(--muted);
+  font-size: 0.9rem; /* a bit smaller */
+}
+
+/* 900px+: 3 columns but still compact */
+@media (min-width: 900px) {
+  .ftr-grid.ftr-grid-compact {
+    grid-template-columns: 2fr 1fr 1fr; /* brand wider, others narrow */
+    gap: 18px;
+  }
+}
+
+/* Very small screens: prevent tall footer by tighter line-height */
+@media (max-width: 420px) {
+  .fcol p.muted {
+    line-height: 1.4;
   }
 }
